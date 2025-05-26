@@ -1,5 +1,5 @@
 import { useUnit } from "effector-react";
-import { $cards } from "@/entities/card/models";
+import { $cards } from "@/entities/card/model";
 import { Grid } from "@/widgets/grid";
 import cls from "./board.module.scss";
 

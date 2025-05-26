@@ -16,9 +16,9 @@ import { useUnit } from "effector-react";
 
 import { Card } from "@/entities/card/ui/card";
 import { GridCell } from "./grid-cell";
-import { $activeDndItemId, $cards } from "@/entities/card/models";
-import { dragEnded, dragStarted } from "../models";
-import { cardMoved } from "@/features/move-card/models";
+import { $activeDndItemId, $cards } from "@/entities/card/model";
+import { dragEnded, dragStarted } from "../model";
+import { cardMoved } from "@/features/move-card/model";
 
 import cls from './grid.module.scss';
 

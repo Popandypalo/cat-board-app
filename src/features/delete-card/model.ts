@@ -1,5 +1,5 @@
 import { createEvent, sample } from 'effector';
-import { $cards } from '@/entities/card/models';
+import { $cards } from '@/entities/card/model';
 
 export const cardDeleted = createEvent<string>();
 

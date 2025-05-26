@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import cls from './add-card.module.scss';
-import { cardAdded } from '../models';
+import { cardAdded } from '../model';
 import type { CardType } from '@/entities/card/types';
 
 export const AddCard = () => {

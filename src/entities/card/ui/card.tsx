@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 import { DeleteCard } from '@/features/delete-card/ui/delete-card';
-import { cardDeleted } from '@/features/delete-card/models';
+import { cardDeleted } from '@/features/delete-card/model';
 import type { CardType } from '@/entities/card/types';
-import { FALLBACK_IMAGE } from '../models';
+import { FALLBACK_IMAGE } from '../model';
 
 import cls from './card.module.scss';
 

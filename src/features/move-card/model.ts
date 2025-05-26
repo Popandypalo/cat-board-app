@@ -1,4 +1,4 @@
-import { $cards } from "@/entities/card/models";
+import { $cards } from "@/entities/card/model";
 import { createEvent, sample } from "effector";
 
 export const cardMoved = createEvent<{activeId: string; overId: string}>();

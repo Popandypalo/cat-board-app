@@ -1,4 +1,4 @@
-import { $activeDndItemId } from "@/entities/card/models";
+import { $activeDndItemId } from "@/entities/card/model";
 import { createEvent, sample } from "effector";
 
 export const dragEnded = createEvent();

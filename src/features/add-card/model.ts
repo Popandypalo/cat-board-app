@@ -1,4 +1,4 @@
-import { $cards } from "@/entities/card/models";
+import { $cards } from "@/entities/card/model";
 import type { CardType } from "@/entities/card/types";
 import { createEvent, sample } from "effector";
 
