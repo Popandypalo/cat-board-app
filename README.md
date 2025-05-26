@@ -1,6 +1,6 @@
 # 🐱 CAT-BOARD-APP
 
-![hippo]([https://media3.giphy.com/media/aUovxH8Vf9qDu/giphy.gif](https://tenor.com/ru/view/legend-of-hei-hei-hei-cat-black-cat-beach-black-cat-animation-gif-11883306496430789675))
+![hippo](https://media.gifdb.com/sakamoto-cat-anime-sleep-ouo9zvwh4opkja3y.gif)
 
 Мини-приложение для организации коллекции котиков (dnd-kit).
 
