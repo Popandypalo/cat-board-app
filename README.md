@@ -1,6 +1,6 @@
 # 🐱 CAT-BOARD-APP
 
-<img src="https://media.gifdb.com/sakamoto-cat-anime-sleep-ouo9zvwh4opkja3y.gif"/>
+<img src="https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif"/>
 
 Мини-приложение для организации коллекции котиков (dnd-kit).
 
