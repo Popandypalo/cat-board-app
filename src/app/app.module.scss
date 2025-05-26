@@ -1,0 +1,52 @@
+@use "sass:math";
+
+.app {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: linear-gradient(45deg, #ffcdb2, #ffb4a2, #e5989b);
+    overflow: hidden;
+
+  &__emoji {
+    position: absolute;
+    font-size: 24px;
+    opacity: 0.6;
+    z-index: 0;
+    animation: app__float-emoji 15s linear infinite;
+
+    pointer-events: none;
+    
+    @for $i from 1 through 50 {
+     &:nth-child(#{$i}) {
+        $side: math.random();
+        $position: math.random(); 
+        
+        @if $side < 0.5 {
+          left: calc(#{$position} * 10%);
+        } @else {
+          left: calc(85% + #{$position} * 14%);
+        }
+        top: calc(1% + #{math.random()} * 100%);
+        
+        animation-delay: calc(#{math.random()} * 1s);
+        animation-duration: calc(5s + #{math.random()} * 5s);
+      }
+    }
+  }
+
+  @keyframes app__float-emoji {
+    0% {
+      transform: translateY(0) rotate(0deg) scale(1);
+      opacity: 0.65;
+    }
+    50% {
+      transform: translateY(-50px) rotate(180deg) scale(1.3);
+      opacity: 0.7;
+    }
+    100% {
+      transform: translateY(0) rotate(360deg) scale(1);
+      opacity: 0.75;
+    }
+  }
+}
+

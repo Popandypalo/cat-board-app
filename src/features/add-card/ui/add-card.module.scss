@@ -1,0 +1,33 @@
+.add-button {
+  position: fixed;
+  
+  bottom: 40px;
+  right: 40px;
+  width: 100px;
+  height: 100px;
+
+  font-size: 55px;
+  z-index: 1000;
+  border-radius: 60%;
+  border: none;
+  outline: none;
+
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  cursor: pointer;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+
+  transition: all 1.5s ease;
+
+
+  &:active, &:focus {
+    opacity: 1 !important;
+    background-color: #ffffff !important;
+    transform: scale(1.15);
+  }
+}
+

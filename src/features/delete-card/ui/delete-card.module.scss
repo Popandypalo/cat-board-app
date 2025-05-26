@@ -1,0 +1,36 @@
+.deleteCard {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 24px;
+  height: 24px;
+  z-index: 10;
+  
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  border-radius: 50%;
+  
+  cursor: pointer;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  
+  padding: 0;
+  margin: 0;
+
+  &:hover {
+    background: red;
+    transform: scale(1.1);
+    border: none;
+  }
+
+  &__icon {
+    color: white;
+    font-size: 20px;
+    line-height: 1;
+
+    pointer-events: none;
+  }
+}

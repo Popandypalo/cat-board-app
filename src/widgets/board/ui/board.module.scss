@@ -1,0 +1,35 @@
+.board {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 70vh;
+  padding: 4rem;
+  font-family: 'Montserrat', 'Arial', sans-serif;
+
+  &__empty-state {
+    text-align: center;
+    max-width: 50rem;
+  }
+
+  &__empty-icon {
+    font-size: 8rem;
+    display: block;
+    margin-bottom: 3rem;
+    animation: board__icon-float 3s ease-in-out infinite;
+  }
+
+  &__empty-message {
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: black;
+    line-height: 1.4;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+}
+
+@keyframes board__icon-float {
+  0%, 100% { transform: translateY(0) rotate(-5deg); }
+  50% { transform: translateY(-2rem) rotate(5deg); }
+}
