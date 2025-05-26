@@ -1,7 +1,7 @@
 
 import BoardPage from "@/pages/board-page/board-page";
 
-import cls from "./App.module.scss";
+import cls from "./app.module.scss";
 
 const App = () => {
     return(
