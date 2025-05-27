@@ -1,3 +1,5 @@
+@use '@/shared/styles/typography' as *;
+
 .board {
   display: flex;
   flex-direction: column;
@@ -5,7 +7,8 @@
   justify-content: center;
   min-height: 70vh;
   padding: 4rem;
-  font-family: 'Montserrat', 'Arial', sans-serif;
+  
+  @extend .text;
 
   &__empty-state {
     text-align: center;
@@ -15,14 +18,17 @@
   &__empty-icon {
     font-size: 8rem;
     display: block;
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
     animation: board__icon-float 3s ease-in-out infinite;
   }
 
   &__empty-message {
-    font-size: 2.4rem;
-    font-weight: 700;
+    @extend .text_size_l;
+    @extend .text_weight_bold;  
+    
     color: black;
+    font-size: 4rem;
+
     line-height: 1.4;
     text-transform: uppercase;
     letter-spacing: 0.1em;

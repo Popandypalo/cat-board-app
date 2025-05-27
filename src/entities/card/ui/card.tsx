@@ -4,10 +4,10 @@ import { useCardImage } from '../hooks';
 import { DeleteCard } from '@/features/delete-card/ui/delete-card';
 
 import cls from './card.module.scss';
+import { cardDeleted } from '@/features/delete-card/model';
 
-export interface CardProps extends CardType {
+interface CardProps extends CardType {
   isDragging?: boolean;
-  onDelete?: (id: string) => void;
   isLoading?: boolean;
   imageSrc?: string | null;
 }
@@ -17,14 +17,12 @@ export const Card = React.memo(({
   imageUrl,
   description,
   isDragging = false,
-  onDelete
 }: CardProps) => {
   const { src, isLoading } = useCardImage(imageUrl);
 
   return (
     <div className={`${cls.card} ${isDragging ? cls.card_dragging : ''}`}>
-      {onDelete && <DeleteCard onClick={() => onDelete(id)} />}
-      
+      {<DeleteCard onClick={() => cardDeleted(id)} />}
       <div className={cls.card__image}>
         {isLoading && <div className={cls.card__loader} />}
         {src && (

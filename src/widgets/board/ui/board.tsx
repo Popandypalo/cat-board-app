@@ -14,9 +14,9 @@ export const Board = () => {
         <div className={cls['board__empty-state']}>
           <span className={cls['board__empty-icon']}>😿</span>
           
-          <h2 className={cls['board__empty-message']}>
+          <text className={cls['board__empty-message']}>
             Ой, тут пусто!<br />Добавь первую карточку с котиком
-          </h2>
+          </text>
         </div>
       )}
     </div>

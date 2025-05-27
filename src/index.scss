@@ -1,0 +1,14 @@
+@use '@/shared/styles/fonts';
+@use '@/shared/styles/typography';
+
+body {
+  @extend .text;
+  @extend .text_size_m;
+
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}

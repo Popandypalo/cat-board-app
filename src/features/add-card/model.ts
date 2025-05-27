@@ -5,18 +5,15 @@ import { fetchCatImage } from "./api";
 
 export const cardAdded = createEvent();
 
-// Properly typed effect
 export const fetchCatImageFx = createEffect<void, string, Error>(async () => {
   return await fetchCatImage();
 });
 
-// Trigger image fetch when card is added
 sample({
   clock: cardAdded,
   target: fetchCatImageFx
 });
 
-// Add new card when image is successfully fetched
 sample({
   clock: fetchCatImageFx.doneData,
   source: $cards,

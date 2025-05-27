@@ -1,0 +1,12 @@
+@mixin font-face($name, $path, $weight: 400, $style: normal) {
+  @font-face {
+    font-family: $name;
+    src: local('Ramka'), url('../assets/fonts/ramka/Ramka.otf') format('opentype');
+    font-weight: $weight;
+    font-style: $style;
+    font-display: swap;
+  }
+}
+
+@include font-face('Ramka', '../assets/fonts/ramka/Ramka', 400);
+@include font-face('Ramka', '../assets/fonts/ramka/Ramka-Bold', 700);
