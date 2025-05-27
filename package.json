@@ -29,7 +29,8 @@
     "react-virtuoso": "^4.12.7",
     "sass": "^1.89.0",
     "uuid": "^11.1.0",
-    "vite-tsconfig-paths": "^5.1.4"
+    "vite-tsconfig-paths": "^5.1.4",
+    "zod": "^3.25.30"
   },
   "devDependencies": {
     "@eslint/js": "^9.25.0",

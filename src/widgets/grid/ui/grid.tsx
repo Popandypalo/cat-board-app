@@ -10,7 +10,7 @@ import {
   type UniqueIdentifier,
 } from '@dnd-kit/core';
 
-import { SortableContext, sortableKeyboardCoordinates } from '@dnd-kit/sortable';
+import { SortableContext, sortableKeyboardCoordinates, verticalListSortingStrategy } from '@dnd-kit/sortable';
 
 import { useUnit } from "effector-react";
 

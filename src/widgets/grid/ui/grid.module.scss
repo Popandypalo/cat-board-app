@@ -3,7 +3,7 @@
   gap: 16px;
   padding: 16px;
   width: 100%;
-  grid-auto-rows: minmax(100px, auto);
+  grid-auto-rows: repeat(auto-fill, minmax(150px, 1fr));
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
 }
 
