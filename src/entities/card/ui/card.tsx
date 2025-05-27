@@ -1,71 +1,43 @@
-import { useState, useEffect, useRef } from 'react';
+import React from 'react';
+import type { CardType } from '../types';
+import { useCardImage } from '../hooks';
 import { DeleteCard } from '@/features/delete-card/ui/delete-card';
-import { cardDeleted } from '@/features/delete-card/model';
-import type { CardType } from '@/entities/card/types';
-import { FALLBACK_IMAGE } from '../model';
 
 import cls from './card.module.scss';
 
-interface CardProps extends CardType {
+export interface CardProps extends CardType {
   isDragging?: boolean;
+  onDelete?: (id: string) => void;
+  isLoading?: boolean;
+  imageSrc?: string | null;
 }
 
-export const Card = ({ id, imageUrl, description, isDragging }: CardProps) => {
-  const [imageState, setImageState] = useState<{
-    src: string | null;
-    isLoading: boolean;
-  }>({ src: null, isLoading: true });
-
-  const loadedImages = useRef<Set<string>>(new Set());
-
-  useEffect(() => {
-    if (!imageUrl) {
-      setImageState({ src: FALLBACK_IMAGE, isLoading: false });
-      return;
-    }
-
-    if (loadedImages.current.has(imageUrl)) {
-      setImageState({ src: imageUrl, isLoading: false });
-      return;
-    }
-
-    setImageState(prev => ({ ...prev, isLoading: true }));
-
-    const img = new Image();
-    img.src = imageUrl;
-    
-    img.onload = () => {
-      loadedImages.current.add(imageUrl);
-      setImageState({ src: imageUrl, isLoading: false });
-    };
-    
-    img.onerror = () => {
-      loadedImages.current.add(imageUrl);
-      setImageState({ src: FALLBACK_IMAGE, isLoading: false });
-    };
-
-    return () => {
-      img.onload = null;
-      img.onerror = null;
-    };
-  }, [imageUrl]);
+export const Card = React.memo(({
+  id,
+  imageUrl,
+  description,
+  isDragging = false,
+  onDelete
+}: CardProps) => {
+  const { src, isLoading } = useCardImage(imageUrl);
 
   return (
     <div className={`${cls.card} ${isDragging ? cls.card_dragging : ''}`}>
-      <DeleteCard onClick={() => cardDeleted(id)} />
+      {onDelete && <DeleteCard onClick={() => onDelete(id)} />}
       
       <div className={cls.card__image}>
-        {imageState.isLoading && <div className={cls.card__loader} />}
-        {imageState.src && (
+        {isLoading && <div className={cls.card__loader} />}
+        {src && (
           <img 
-            src={imageState.src}
+            src={src}
             alt={description}
-            className={`${cls.card__img} ${
-              imageState.isLoading ? cls.card__img_hidden : ''
-            }`}
+            loading="lazy"
+            className={`${cls.card__img} ${isLoading ? cls.card__img_hidden : ''}`}
           />
         )}
       </div>
     </div>
   );
-};
+});
+
+Card.displayName = 'Card';

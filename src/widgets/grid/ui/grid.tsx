@@ -1,3 +1,4 @@
+import { useCallback, useMemo } from 'react';
 
 import {
   DndContext,
@@ -10,7 +11,7 @@ import {
   type UniqueIdentifier,
 } from '@dnd-kit/core';
 
-import { SortableContext, sortableKeyboardCoordinates, verticalListSortingStrategy } from '@dnd-kit/sortable';
+import { SortableContext, sortableKeyboardCoordinates } from '@dnd-kit/sortable';
 
 import { useUnit } from "effector-react";
 
@@ -22,22 +23,31 @@ import { cardMoved } from "@/features/move-card/model";
 
 import cls from './grid.module.scss';
 
+
 export const Grid = () => {
   const [cards, activeId] = useUnit([$cards, $activeDndItemId]);
-  const activeCard = cards.find(card => card.id === activeId);
   
+  const activeCard = useMemo(() => 
+    cards.find(card => card.id === activeId),
+    [cards, activeId]
+  );
+
   const sensors = useSensors(
-    useSensor(PointerSensor),
+    useSensor(PointerSensor, {
+      activationConstraint: {
+        distance: 5,
+      },
+    }),
     useSensor(KeyboardSensor, {
       coordinateGetter: sortableKeyboardCoordinates,
     })
   );
-
-  const handleDragStart = ({ active }: { active: { id: UniqueIdentifier } }) => {
+  
+  const handleDragStart = useCallback(({ active }: { active: { id: UniqueIdentifier } }) => {
     dragStarted(active.id.toString());
-  };
-
-  const handleDragEnd = ({ active, over }: { 
+  }, []);
+  
+  const handleDragEnd = useCallback(({ active, over }: { 
     active: { id: UniqueIdentifier }, 
     over: { id: UniqueIdentifier } | null 
   }) => {
@@ -48,7 +58,9 @@ export const Grid = () => {
         overId: over.id.toString() 
       });
     }
-  };
+  }, []);
+
+  const sortableItems = useMemo(() => cards.map(card => card.id), [cards]);
 
   return (
     <DndContext
@@ -57,13 +69,10 @@ export const Grid = () => {
       onDragStart={handleDragStart}
       onDragEnd={handleDragEnd}
     >
-      <SortableContext items={cards.map(card => card.id)}>
+      <SortableContext items={sortableItems}>
         <div className={cls.grid}>
           {cards.map(card => (
-            <GridCell 
-              key={card.id}
-              id={card.id}
-            >
+            <GridCell key={card.id} id={card.id}>
               <Card
                 id={card.id}
                 description={card.description}

@@ -7,7 +7,6 @@
   overflow: hidden;
 
   &_dragging {
-    opacity: 0.8;
     filter: brightness(60%);
   }
 
@@ -28,10 +27,10 @@
 
   &__loader {
     position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
-    background: white;
+    background: black
+        url("https://i.imgur.com/5w0ydly.gif") center no-repeat;
+    background-size: 150px 150px;  
   }
 }
