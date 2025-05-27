@@ -10,7 +10,6 @@ export const AddCard = () => {
     <button
       className={`${cls['add-button']} ${loading ? cls.loading : ''}`}
       onClick={()=>cardAdded()}
-      disabled={loading}
     >
       <span className={cls.cat}>
         {loading ? '😻' : '🐱'}
