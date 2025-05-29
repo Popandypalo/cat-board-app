@@ -3,6 +3,6 @@ export type CardType = {
   description: string;
   imageUrl: string;
 
-  isLiked?: false;
+  isLiked?: boolean;
   breeds?: string[];
 }
