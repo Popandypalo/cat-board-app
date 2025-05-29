@@ -8,13 +8,9 @@ import cls from './grid-cell.module.scss';
 
 interface GridCellProps {
   id?: string;
+  children: React.ReactNode;
   width?: number;
   height?: number;
-
-  children: (props: { 
-    attributes: object; 
-    listeners: object 
-  }) => React.ReactNode;
 }
 
 export const GridCell = React.memo(({ 
