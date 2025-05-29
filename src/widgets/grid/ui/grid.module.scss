@@ -11,3 +11,27 @@
   min-height: 100px;
   touch-action: none;
 }
+
+.dropZone {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 100px;
+  z-index: 100;
+  opacity: 0.3;
+  transition: opacity 0.2s;
+
+  &.leftDropZone {
+    left: 0;
+    background: blue;
+  }
+
+  &.rightDropZone {
+    right: 0;
+    background: red;
+  }
+
+  &.dropZoneActive {
+    opacity: 0.8;
+  }
+}

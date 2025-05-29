@@ -10,4 +10,4 @@ export const CatImageSchema = z.object({
 
 export const CatImagesSchema = z.array(CatImageSchema);
 
-export type CatImage = z.infer<typeof CatImageSchema>;
+export type CatImages = z.infer<typeof CatImagesSchema>;

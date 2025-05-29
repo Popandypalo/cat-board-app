@@ -13,7 +13,7 @@ export const useCardImage = (imageUrl?: string) => {
     if (!imageUrl) {
       setState({ src: FALLBACK_IMAGE, isLoading: false });
       return;
-    }
+    }   
 
     if (imageCache.has(imageUrl)) {
       setState({ src: imageCache.get(imageUrl)!, isLoading: false });

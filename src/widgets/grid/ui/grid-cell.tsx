@@ -2,21 +2,26 @@ import React from "react";
 
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
+import { v4 as uuidv4 } from 'uuid';
 
 import cls from './grid-cell.module.scss';
 
 interface GridCellProps {
-  id: string;
-  children: React.ReactNode;
+  id?: string;
   width?: number;
   height?: number;
+
+  children: (props: { 
+    attributes: object; 
+    listeners: object 
+  }) => React.ReactNode;
 }
 
 export const GridCell = React.memo(({ 
-  id, 
+  id = uuidv4(), 
   children, 
-  width = 1, 
-  height = 1 
+  width = 2, 
+  height = 2 
 }: GridCellProps) => {
   const {
     attributes,
@@ -25,14 +30,6 @@ export const GridCell = React.memo(({
     transform,
     transition,
   } = useSortable({ id });
-
-  const handlePointerDown = (e: React.PointerEvent) => {
-    const target = e.target as HTMLElement;
-    if (target.closest('[data-delete-button]')) {
-      return;
-    }
-    listeners?.onPointerDown?.(e);
-  };
 
   const style = {
     transform: CSS.Transform.toString(transform),
@@ -47,7 +44,6 @@ export const GridCell = React.memo(({
       style={style}
       {...attributes}
       {...listeners}
-      onPointerDown={handlePointerDown}
       className={cls['grid-cell']}
     >
       {children}

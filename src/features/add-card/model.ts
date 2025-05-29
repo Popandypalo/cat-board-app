@@ -2,10 +2,12 @@ import { $cards } from "@/entities/card/model";
 import { v4 as uuidv4 } from 'uuid';
 import { createEffect, createEvent, sample } from "effector";
 import { fetchCatImage } from "./api";
+import type { CatImages } from "./schemas";
+import type { CardType } from "@/entities/card/types";
 
 export const cardAdded = createEvent();
 
-export const fetchCatImageFx = createEffect<void, string, Error>(async () => {
+export const fetchCatImageFx = createEffect<void, CatImages, Error>(async () => {
   return await fetchCatImage();
 });
 
@@ -17,13 +19,19 @@ sample({
 sample({
   clock: fetchCatImageFx.doneData,
   source: $cards,
-  fn: (cards, imageUrl) => [
+  fn: (cards, data) => {
+    console.log(cards.map(card => card.id));
+    return [
     ...cards,
-    {
-      id: uuidv4(),
-      description: 'Новая карточка',
-      imageUrl: imageUrl,
-    }
-  ],
+    ...data.map(
+      card => ({
+        id: uuidv4(),
+        description: 'Новая 1карточка',
+        imageUrl: card.url,
+        breeds: card.breeds,
+        isLiked: false
+      } as CardType)
+    )
+  ] as CardType[]},
   target: $cards
 });

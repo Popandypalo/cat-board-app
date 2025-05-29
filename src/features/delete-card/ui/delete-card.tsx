@@ -13,7 +13,6 @@ export const DeleteCard = ({ onClick }: DeleteCardProps) => {
         onClick();
       }}
       onPointerDown={(e) => e.stopPropagation()}
-      data-delete-button
     >
       <span className={cls.deleteCard__icon}>×</span>
     </button>
